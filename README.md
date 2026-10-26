@@ -4,6 +4,8 @@ Aplikasi absensi siswa berbasis **HTML, CSS, JavaScript murni**, dan **Supabase*
 Aplikasi mencakup login, dashboard, pencatatan kehadiran, pembaruan data
 real-time, validasi, serta pencegahan absensi ganda.
 
+**Repository GitHub:** https://github.com/alvino133dc-max/absensi-digital
+
 ---
 
 ## 1. Kredensial Akun

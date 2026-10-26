@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard absensi siswa HadirKu.">
+  <meta name="theme-color" content="#0b3b30">
+  <title>Dashboard | HadirKu - Sistem Absensi Siswa</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+
+  <!-- Kumpulan ikon SVG agar tidak perlu memuat library ikon eksternal -->
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="M20 6 9 17l-5-5"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <path d="M21.801 10A10 10 0 1 1 17 3.335"/>
+      <path d="m9 11 3 3L22 4"/>
+    </symbol>
+    <symbol id="icon-shield-check" viewBox="0 0 24 24">
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+      <path d="m9 12 2 2 4-4"/>
+    </symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24">
+      <path d="M8 2v4"/><path d="M16 2v4"/>
+      <rect width="18" height="18" x="3" y="4" rx="2"/>
+      <path d="M3 10h18"/>
+    </symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24">
+      <path d="M3 3v16a2 2 0 0 0 2 2h16"/>
+      <path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12 6 12 12 16 14"/>
+    </symbol>
+    <symbol id="icon-heart-pulse" viewBox="0 0 24 24">
+      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+      <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>
+    </symbol>
+    <symbol id="icon-database" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="5" rx="9" ry="3"/>
+      <path d="M3 5v14a9 3 0 0 0 18 0V5"/>
+      <path d="M3 12a9 3 0 0 0 18 0"/>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/>
+      <path d="m21 21-4.3-4.3"/>
+    </symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24">
+      <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+      <path d="M21 3v5h-5"/>
+      <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+      <path d="M8 16H3v5"/>
+    </symbol>
+    <symbol id="icon-edit" viewBox="0 0 24 24">
+      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
+      <path d="m15 5 4 4"/>
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M3 6h18"/>
+      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+      <line x1="10" x2="10" y1="11" y2="17"/>
+      <line x1="14" x2="14" y1="11" y2="17"/>
+    </symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24">
+      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </symbol>
+    <symbol id="icon-logout" viewBox="0 0 24 24">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+      <polyline points="16 17 21 12 16 7"/>
+      <line x1="21" x2="9" y1="12" y2="12"/>
+    </symbol>
+    <symbol id="icon-clipboard-check" viewBox="0 0 24 24">
+      <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+      <path d="m9 14 2 2 4-4"/>
+    </symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 16v-4"/><path d="M12 8h.01"/>
+    </symbol>
+    <symbol id="icon-alert-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" x2="12" y1="8" y2="12"/>
+      <line x1="12" x2="12.01" y1="16" y2="16"/>
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+    </symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24">
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+    </symbol>
+    <symbol id="icon-school" viewBox="0 0 24 24">
+      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+      <path d="M22 10v6"/>
+      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+    </symbol>
+  </svg>
+
+  <!-- Loader sesi: konten dashboard baru ditampilkan setelah sesi diverifikasi -->
+  <div id="page-loader" class="page-loader" role="status" aria-live="polite">
+    <span class="brand-mark">
+      <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+    </span>
+    <span class="spinner"></span>
+    <p id="page-loader-text">Memeriksa sesi login...</p>
+  </div>
+
+  <div id="app" class="app-layout" hidden>
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <a class="brand brand-light" href="dashboard.html" aria-label="HadirKu - dashboard">
+          <span class="brand-mark">
+            <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">HadirKu</span>
+            <span class="brand-sub">Sistem Absensi Siswa</span>
+          </span>
+        </a>
+
+        <nav class="sidebar-nav" aria-label="Navigasi utama">
+          <a href="dashboard.html" class="nav-link is-active" aria-current="page">
+            <svg class="icon" aria-hidden="true"><use href="#icon-chart"></use></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="#data-absensi" class="nav-link">
+            <svg class="icon" aria-hidden="true"><use href="#icon-clipboard-check"></use></svg>
+            <span>Data Absensi</span>
+            <span class="nav-count" id="nav-count">0</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-tip">
+          <span class="tip-icon"><svg class="icon" aria-hidden="true"><use href="#icon-shield-check"></use></svg></span>
+          <p><strong>Data aman.</strong> Absensi tersimpan di Supabase dan dilindungi Row Level Security.</p>
+        </div>
+      </div>
+
+      <div class="sidebar-user">
+        <span class="avatar" id="user-avatar" aria-hidden="true">HK</span>
+        <div class="user-meta">
+          <strong id="user-name">Memuat...</strong>
+          <span id="user-email">—</span>
+        </div>
+        <button type="button" id="logout-button" class="icon-button icon-button-light" aria-label="Keluar dari akun" title="Keluar">
+          <svg class="icon" aria-hidden="true"><use href="#icon-logout"></use></svg>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Sistem Absensi Siswa</p>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="role-pill" id="role-pill" title="Akun ini memiliki akses admin" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#icon-shield-check"></use></svg>
+            Admin
+          </span>
+          <span class="date-pill">
+            <svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg>
+            <span id="current-date">—</span>
+          </span>
+          <span class="live-pill is-connecting" id="live-indicator" title="Status koneksi real-time">
+            <span class="live-dot"></span>
+            <span id="live-text">Menghubungkan...</span>
+          </span>
+        </div>
+      </header>
+
+      <section class="welcome-card" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <p class="welcome-eyebrow" id="greeting">Selamat datang</p>
+          <h2 id="welcome-title">Halo, <span id="welcome-name">Siswa</span> 👋</h2>
+          <p>Catat kehadiran hari ini dan pantau data kelas secara langsung. Semua perubahan langsung tersimpan di Supabase.</p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <svg viewBox="0 0 200 160" fill="none">
+            <rect x="42" y="30" width="116" height="108" rx="18" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.16)"/>
+            <path d="M42 55c0-13.8 11.2-25 25-25h66c13.8 0 25 11.2 25 25v7H42v-7Z" fill="rgba(255,255,255,.07)"/>
+            <rect x="60" y="18" width="10" height="24" rx="5" fill="#f2b84b"/>
+            <rect x="130" y="18" width="10" height="24" rx="5" fill="#f2b84b"/>
+            <circle cx="100" cy="96" r="29" fill="rgba(94,224,160,.13)" stroke="rgba(94,224,160,.35)"/>
+            <path d="M87 96l9 9 17-19" stroke="#7af0b7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="172" cy="38" r="7" fill="#f2b84b" fill-opacity=".85"/>
+            <circle cx="27" cy="122" r="5" fill="#7af0b7" fill-opacity=".6"/>
+            <circle cx="172" cy="132" r="4" fill="#7af0b7" fill-opacity=".45"/>
+          </svg>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Ringkasan data absensi">
+        <article class="stat-card stat-total">
+          <div class="stat-top">
+            <span class="stat-icon"><svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg></span>
+            <span class="stat-label">Total Absensi</span>
+          </div>
+          <strong class="stat-value" id="stat-total">0</strong>
+          <span class="stat-note">Semua data yang tercatat</span>
+        </article>
+        <article class="stat-card stat-hadir">
+          <div class="stat-top">
+            <span class="stat-icon"><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"></use></svg></span>
+            <span class="stat-label">Hadir</span>
+          </div>
+          <strong class="stat-value" id="stat-hadir">0</strong>
+          <span class="stat-note">Siswa hadir</span>
+        </article>
+        <article class="stat-card stat-izin">
+          <div class="stat-top">
+            <span class="stat-icon"><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg></span>
+            <span class="stat-label">Izin</span>
+          </div>
+          <strong class="stat-value" id="stat-izin">0</strong>
+          <span class="stat-note">Siswa dengan izin</span>
+        </article>
+        <article class="stat-card stat-sakit">
+          <div class="stat-top">
+            <span class="stat-icon"><svg class="icon" aria-hidden="true"><use href="#icon-heart-pulse"></use></svg></span>
+            <span class="stat-label">Sakit</span>
+          </div>
+          <strong class="stat-value" id="stat-sakit">0</strong>
+          <span class="stat-note">Siswa sakit</span>
+        </article>
+      </section>
+
+      <div class="content-grid">
+        <section class="card form-card" id="form-absensi" aria-labelledby="form-title">
+          <div class="card-header">
+            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-clipboard-check"></use></svg></span>
+            <div>
+              <h2 id="form-title">Catat Absensi</h2>
+              <p id="form-subtitle">Lengkapi data kehadiran siswa di bawah ini.</p>
+            </div>
+          </div>
+
+          <div class="edit-banner" id="edit-banner" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#icon-edit"></use></svg>
+            <span id="edit-banner-text">Sedang mengubah data absensi.</span>
+            <button type="button" id="cancel-edit-banner">Batal</button>
+          </div>
+
+          <div id="form-alert" class="alert" role="alert" hidden>
+            <svg class="icon" aria-hidden="true"><use id="form-alert-icon" href="#icon-alert-circle"></use></svg>
+            <span id="form-alert-text"></span>
+          </div>
+
+          <form id="attendance-form" novalidate>
+            <div class="form-grid">
+              <div class="form-field form-field-full" id="field-nama">
+                <label for="nama">Nama siswa <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg>
+                  <input
+                    id="nama"
+                    name="nama"
+                    type="text"
+                    placeholder="Contoh: Ardi Pratama"
+                    maxlength="100"
+                    autocomplete="off"
+                    required
+                  >
+                </div>
+                <p class="field-error" id="nama-error" aria-live="polite"></p>
+              </div>
+
+              <div class="form-field" id="field-kelas">
+                <label for="kelas">Kelas <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-school"></use></svg>
+                  <input
+                    id="kelas"
+                    name="kelas"
+                    type="text"
+                    placeholder="Contoh: XI RPL"
+                    maxlength="50"
+                    autocomplete="off"
+                    required
+                  >
+                </div>
+                <p class="field-error" id="kelas-error" aria-live="polite"></p>
+              </div>
+
+              <div class="form-field" id="field-tanggal">
+                <label for="tanggal">Tanggal absensi <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg>
+                  <input
+                    id="tanggal"
+                    name="tanggal"
+                    type="date"
+                    required
+                  >
+                </div>
+                <p class="field-error" id="tanggal-error" aria-live="polite"></p>
+              </div>
+
+              <div class="form-field form-field-full" id="field-status">
+                <span class="field-label">Status kehadiran <span class="required">*</span></span>
+                <div class="status-options" role="radiogroup" aria-label="Status kehadiran">
+                  <label class="status-option status-hadir">
+                    <input type="radio" name="status" value="Hadir" required>
+                    <span class="status-option-inner">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-check-circle"></use></svg>
+                      <span>Hadir</span>
+                    </span>
+                  </label>
+                  <label class="status-option status-izin">
+                    <input type="radio" name="status" value="Izin" required>
+                    <span class="status-option-inner">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg>
+                      <span>Izin</span>
+                    </span>
+                  </label>
+                  <label class="status-option status-sakit">
+                    <input type="radio" name="status" value="Sakit" required>
+                    <span class="status-option-inner">
+                      <svg class="icon" aria-hidden="true"><use href="#icon-heart-pulse"></use></svg>
+                      <span>Sakit</span>
+                    </span>
+                  </label>
+                </div>
+                <p class="field-error" id="status-error" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="submit-button" class="button button-primary button-block form-submit">
+                <span class="button-label" id="submit-label">Simpan Absensi</span>
+                <span class="spinner spinner-sm" id="submit-spinner" hidden></span>
+              </button>
+              <button type="button" id="reset-form" class="text-button">Bersihkan form</button>
+            </div>
+          </form>
+
+          <div class="form-note">
+            <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+            <span>Absensi ganda untuk siswa, kelas, dan tanggal yang sama akan otomatis ditolak.</span>
+          </div>
+        </section>
+
+        <section class="card table-card" id="data-absensi" aria-labelledby="table-title">
+          <div class="table-card-header">
+            <div class="card-header">
+              <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-database"></use></svg></span>
+              <div>
+                <h2 id="table-title">Data Absensi</h2>
+                <p><span id="table-count">0</span> data ditemukan</p>
+              </div>
+            </div>
+
+            <div class="table-toolbar">
+              <div class="search-field">
+                <svg class="icon" aria-hidden="true"><use href="#icon-search"></use></svg>
+                <input id="search-input" type="search" placeholder="Cari nama atau kelas..." aria-label="Cari data absensi">
+              </div>
+              <select id="status-filter" class="filter-select" aria-label="Filter status kehadiran">
+                <option value="all">Semua status</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Izin">Izin</option>
+                <option value="Sakit">Sakit</option>
+              </select>
+              <button type="button" id="refresh-button" class="icon-button" aria-label="Muat ulang data" title="Muat ulang data">
+                <svg class="icon" aria-hidden="true"><use href="#icon-refresh"></use></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table id="attendance-table">
+              <caption class="sr-only">Daftar absensi siswa</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Kelas</th>
+                  <th scope="col">Tanggal</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" class="th-actions">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="attendance-table-body"></tbody>
+            </table>
+
+            <div class="empty-state" id="empty-state" hidden>
+              <span class="empty-icon"><svg class="icon" aria-hidden="true"><use id="empty-icon-use" href="#icon-clipboard-check"></use></svg></span>
+              <h3 id="empty-title">Belum ada data absensi</h3>
+              <p id="empty-text">Data akan muncul di sini setelah absensi pertama berhasil disimpan.</p>
+              <button type="button" id="empty-action" class="button button-ghost button-sm" hidden>Reset filter</button>
+            </div>
+          </div>
+
+          <div class="table-footer">
+            <span id="table-summary" aria-live="polite">Menampilkan 0 dari 0 data</span>
+            <span class="last-updated">
+              <span class="dot" aria-hidden="true"></span>
+              <span id="last-updated">Memuat data...</span>
+            </span>
+          </div>
+        </section>
+      </div>
+
+      <footer class="app-footer">
+        HadirKu · Sistem Absensi Siswa · Data tersimpan di Supabase
+      </footer>
+    </main>
+  </div>
+
+  <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="false"></div>
+
+  <dialog id="delete-dialog" class="modal" aria-labelledby="delete-dialog-title" aria-describedby="delete-dialog-desc">
+    <div class="modal-card">
+      <span class="modal-icon"><svg class="icon" aria-hidden="true"><use href="#icon-trash"></use></svg></span>
+      <h2 id="delete-dialog-title">Hapus absensi?</h2>
+      <p id="delete-dialog-desc">
+        Data absensi <strong id="delete-name">siswa</strong> akan dihapus permanen dan tidak dapat dikembalikan.
+      </p>
+      <div class="modal-actions">
+        <button type="button" id="cancel-delete" class="button button-ghost">Batal</button>
+        <button type="button" id="confirm-delete" class="button button-danger">
+          <span id="delete-label">Hapus</span>
+          <span class="spinner spinner-sm" id="delete-spinner" hidden></span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
